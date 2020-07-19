@@ -5,6 +5,8 @@ Created on Sun Jul 12 15:11:42 2020
 @author: cukel
 """
 
+# 55
+
 import math
 from itertools import combinations_with_replacement as cm
 import itertools
@@ -36,7 +38,7 @@ def getRotations(n):
     # Uses list because thats how cm outputs 
     if all(elem == n[0] for elem in n):
         # Checks if all elements are the same
-        return n
+        return [n]
     rotations=[]; n0=n; flag=True;
     # Flag used to bypass first try
     while n0!=n or flag:
@@ -52,12 +54,11 @@ def isCircular(n):
     if not isPrime(n):
         return False
     for rot in getRotations(num2list(n)):
-            if not isPrime(list2num(rot)):
+        if not isPrime(list2num(rot)):
                 return False
     return True
                 
 circs=[];
-for ii in range(2,100):
-    print(ii)
+for ii in range(2,1000000):
     if isCircular(ii):
         circs.append(ii)
